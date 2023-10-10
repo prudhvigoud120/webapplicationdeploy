@@ -3,10 +3,10 @@ FROM node:20-alpine
 WORKDIR /prudhvi/app/
 
 COPY package.json .
-COPY helloworld.js .
+COPY HelloWorld.js .
 
 RUN npm install
 
 EXPOSE 3000
 
-ENTRYPOINT ["node", "helloworld.js"]
+ENTRYPOINT ["node", "HelloWorld.js"]
