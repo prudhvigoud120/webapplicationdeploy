@@ -3,7 +3,7 @@ FROM node:20-alpine
 WORKDIR /prudhvi/app/
 
 COPY package.json .
-COPY Nicejob.js .
+COPY nicejob.js .
 
 RUN npm install
 
