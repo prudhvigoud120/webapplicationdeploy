@@ -1,10 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage ('build HelloWorld img'){
+        stage ('build helloworld img'){
             steps{
                 script{
-                    sh 'docker build -t prudhvi120/HelloWorld prudhvi-app1/'
+                    sh 'docker build -t prudhvi120/helloworld prudhvi-app1/'
                 }
             }
         }
@@ -14,7 +14,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'docker-credentials', variable: 'docker')]) {
                     sh 'docker login -u prudhvi120 -p ${docker}'
                     }
-                    sh 'docker push prudhvi120/HelloWorld'
+                    sh 'docker push prudhvi120/helloworld'
                 }
             }
         }
