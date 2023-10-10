@@ -1,38 +1,22 @@
 pipeline {
     agent any
-
-    environment {
-        DOCKERHUB_CREDENTIALS = credentials('docker-credentials')
-        IMAGE_NAME = "NiceJob"
-        VERSION = "1.0"
-        FULL_IMAGE_NAME = "$DOCKERHUB_CREDENTIALS_USR/$IMAGE_NAME:$VERSION"
-    }
-
     stages {
-        stage('Build') {
-            steps {
-                sh 'sudo docker build -t $FULL_IMAGE_NAME docker/prudhvi-app2/'          
+        stage ('build nicejob img'){
+            steps{
+                script{
+                    sh 'docker build -t prudhvi120/nicejob prudhvi-app2/'
+                }
             }
         }
-        stage('Login') {
-            steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        stage ('push image to hub'){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'docker-credentials', variable: 'docker')]) {
+                    sh 'docker login -u prudhvi120 -p ${docker}'
+                    }
+                    sh 'docker push prudhvi120/nicejob'
+                }
             }
-        }
-        stage('Push') {
-            steps {
-                sh 'docker push $FULL_IMAGE_NAME'
-            }
-        }
-        stage('Remove') {
-            steps {
-                sh 'docker rmi $FULL_IMAGE_NAME'
-            }
-        }
-    }
-    post {
-        always {
-            sh 'docker logout'
         }
     }
 }
