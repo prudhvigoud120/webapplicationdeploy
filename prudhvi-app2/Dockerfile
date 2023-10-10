@@ -3,10 +3,10 @@ FROM node:20-alpine
 WORKDIR /prudhvi/app/
 
 COPY package.json .
-COPY newplace.js .
+COPY Nice Job.js .
 
 RUN npm install
 
 EXPOSE 5000
 
-ENTRYPOINT ["node", "newplace.js"]
+ENTRYPOINT ["node", "Nice Job.js"]
