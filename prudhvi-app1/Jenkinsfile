@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo docker build -t $FULL_IMAGE_NAME docker/prudhvi-app1/'          
+                sh 'sudo docker build -t $FULL_IMAGE_NAME prudhvi-app1/'          
             }
         }
         stage('Login') {
