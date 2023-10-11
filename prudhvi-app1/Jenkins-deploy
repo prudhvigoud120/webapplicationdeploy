@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'prudhvi120/helloworld' // Replace with your Docker image and tag
-        EC2_INSTANCE = '3.92.146.2' // Replace with your EC2 instance IP or DNS
+        EC2_INSTANCE = '3.89.233.160' // Replace with your EC2 instance IP or DNS
         SSH_KEY = credentials('ssh-key') // Replace with your Jenkins SSH credentials ID
     }
 
