@@ -7,6 +7,6 @@ COPY nicejob.js .
 
 RUN npm install
 
-EXPOSE 3000
+EXPOSE 5000
 
 ENTRYPOINT ["node", "nicejob.js"]
